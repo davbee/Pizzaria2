@@ -1,5 +1,6 @@
 import sys
 
+from PySide6 import QtCore
 from PySide6.QtCore import QFile
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QApplication, QMessageBox, QWidget
@@ -81,6 +82,8 @@ class MainWindow(QWidget):
 
 
 if __name__ == "__main__":
+    # Set the attribute BEFORE creating the QApplication
+    QtCore.QCoreApplication.setAttribute(QtCore.Qt.AA_ShareOpenGLContexts)
     app = QApplication(sys.argv)
     window = MainWindow()
     window.show()
